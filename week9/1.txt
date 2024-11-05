@@ -1,1 +1,64 @@
-Hello
+# Week9
+https://www.canva.com/design/DAGStTo7_1Y/H-uoNlkdJ2X4P3LbOME45Q/edit
+react is not a must for static websites as it increases the bundle size
+but a dynamic website(ex: linkedin) like requires react because it makes DOM manipulation easier
+react is an easier way to write HTML/CSS/JS(under the hood it converts the code to HTML/CSS/JS)
+react is just like you giving a promt to chatgpt and it gives u code
+
+React has two things:
+1: state
+2: components
+ie a website is divided into these two parts
+
+State:
+An object that represents the current state of the app
+It represents the dynamic things in your app (things that change)
+For example, the value of the counter
+
+Component:
+How a DOM element should render, given a state 
+It is a re-usable, dynamic, HTML snippet that changes given the state
+
+React is basically a dom updater or a diff calculator
+You usually have to deﬁne all your components once
+And then all you have to do is update the state of your app, React takes care of re-rendering your app
+
+Steps to create a react code:
+1 state initialisation
+2 define components
+3 add react library
+
+interview question:
+does Component return html?
+ans : not technically true it return JavaScriptXML(similar to json)
+
+anything that start with use are hooks in react
+
+----------------------------------------------------
+// a basic counter application written in react
+import React from 'react'
+
+function App() {
+
+  return (
+    <div>
+      <Button></Button>
+    </div>
+  )
+}
+
+function Button(props) {
+  const [count, setCount] = React.useState(0);
+
+  function onButtonClick() {
+    setCount(count + 1);
+  }
+
+  return React.createElement(
+    'button',
+    { onClick: onButtonClick },
+    `Counter ${count}`
+  );
+}
+
+export default App
