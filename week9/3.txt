@@ -1,0 +1,4 @@
+useState is a Hook that lets you add state to functional components.
+It returns an array with the current state and a function to update it.
+const [count, setcount] = useState(0); in this count is a state and usestate keep rendering when ever it is updated hence it manipuates dom
+if we dont use useeffect when ever there is change in state react rerenders creating flashes in the clock
