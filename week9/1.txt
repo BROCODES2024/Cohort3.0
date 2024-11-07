@@ -1,5 +1,9 @@
 # Week9
+slides in order(first to last):
 https://www.canva.com/design/DAGStTo7_1Y/H-uoNlkdJ2X4P3LbOME45Q/edit
+https://petal-estimate-4e9.notion.site/React-Part-1-1177dfd1073580069172fc54e33929c0
+
+
 react is not a must for static websites as it increases the bundle size
 but a dynamic website(ex: linkedin) like requires react because it makes DOM manipulation easier
 react is an easier way to write HTML/CSS/JS(under the hood it converts the code to HTML/CSS/JS)

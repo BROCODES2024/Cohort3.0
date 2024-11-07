@@ -1,0 +1,6 @@
+first: npm create vite@latest , y , (name it) , react , javascript 
+second: npm install(installs all requirements or dependencies)
+third: npm run dev
+//if something is wrong check directory
+//javascript is casesensitive 
+//usestate is a hook
