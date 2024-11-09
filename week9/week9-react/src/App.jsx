@@ -1,43 +1,26 @@
-import React, { useEffect, useState } from "react";
-
 function App() {
-  const [count, setcount] = useState(0);
-  const [count2, setcount2] = useState(0);
-  function inccnt() {
-    setcount((c) => c + 1);
-  }
-  function deccnt() {
-    setcount2((c) => c - 1);
-  }
-
   return (
     <div>
-      <Counter count={count} count2={count2} />
-      <button onClick={inccnt}>Increase Count</button>
-      <button onClick={deccnt}>Decrease Count</button>
+      <PostComponent></PostComponent>
     </div>
   );
 }
-
-function Counter(props) {
-  useEffect(() => {
-    console.log("mount");
-    return () => {
-      console.log("unmount");
-    };
-  }, []);
-  useEffect(
-    function () {
-      console.log("cnt has changed");
-    },
-    [props.count, props.count2]
-  );
+const style1 = {
+  width: 200,
+  backgroundColor: "white",
+  borderRadius: 10,
+  borderColor: "gray",
+};
+function PostComponent() {
   return (
-    <div>
-      Counter1: {props.count} <br />
-      Counter2: {props.count2} <br />
+    <div style={style1}>
+      <img
+        src={
+          "https://appx-wsb-gcp.akamai.net.in/subject/2023-01-17-0.17044360120951185.jpg"
+        }
+        style={{ width: 20, height: 20, borderRadius: 20 }}
+      />
     </div>
   );
 }
-
 export default App;
