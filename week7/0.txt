@@ -1,0 +1,3 @@
+To create a nodejs file: 
+1: npm init -y 
+2: npm install express mongoose
