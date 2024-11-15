@@ -1,16 +1,14 @@
 const express = require("express");
 const { Usermodel, Todomodel } = require("./db");
-const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 const app = express();
 
 mongoose.connect(
   "mongodb+srv://chetanreddyk394:3O58Ur47vciHi2Ib@cluster0.k8wss.mongodb.net/todos"
 );
+const { auth, JWT_SECRET } = require("./auth");
 
 app.use(express.json());
-
-const JWT_SECRET = "CHETAN@REDDY@394";
 
 // Signup endpoint
 app.post("/signup", async function (req, res) {
