@@ -13,3 +13,10 @@ NoSQL Properties:
 
 -**Schema Flexibility:** NoSQL databases often allow for a flexible schema, meaning you can store data in formats that don't require a fixed structure.
 -**Scalability:** Many NoSQL databases are designed to scale out horizontally, making it easier to distribute data across multiple servers and handle large volumes of traffic.
+
+CRUD Ops:
+CRUD operations in MongoDB refer to the basic operations you can perform on documents within a MongoDB database.
+1. **Create**: Adding new documents to a collection.
+2. **Read**: Retrieving documents from a collection.
+3. **Update**: Modifying existing documents in a collection.
+4. **Delete**: Removing documents from a collection.
