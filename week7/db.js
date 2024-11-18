@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
+
 const Schema = mongoose.Schema;
+const ObjectId = Schema.ObjectId;
 
 const User = new Schema({
   name: String,
@@ -8,16 +10,15 @@ const User = new Schema({
 });
 
 const Todo = new Schema({
-  userID: { type: Schema.Types.ObjectId, ref: "users" },
+  userId: ObjectId,
   title: String,
   done: Boolean,
 });
 
-const Usermodel = mongoose.model("users", User);
-const Todomodel = mongoose.model("todos", Todo);
+const UserModel = mongoose.model("users", User);
+const TodoModel = mongoose.model("todos", Todo);
 
-// Exporting models
 module.exports = {
-  Usermodel: Usermodel,
-  Todomodel: Todomodel,
+  UserModel,
+  TodoModel,
 };

@@ -1,56 +1,87 @@
+const bcrypt = require("bcrypt");
 const express = require("express");
-const { Usermodel, Todomodel } = require("./db");
+const { UserModel, TodoModel } = require("./db");
+const { auth, JWT_SECRET } = require("./auth");
+const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
-const app = express();
 
 mongoose.connect(
-  "mongodb+srv://chetanreddyk394:3O58Ur47vciHi2Ib@cluster0.k8wss.mongodb.net/todos"
+  "mongodb+srv://chetanreddyk394:reddy2024@cluster0.k8wss.mongodb.net/todos0"
 );
-const { auth, JWT_SECRET } = require("./auth");
 
+const app = express();
 app.use(express.json());
 
-// Signup endpoint
 app.post("/signup", async function (req, res) {
-  const { email, password, name } = req.body;
+  const email = req.body.email;
+  const password = req.body.password;
+  const name = req.body.name;
+  const hashpass = await bcrypt.hash(password, 5);
+  console.log(hashpass);
+  await UserModel.create({
+    email: email,
+    password: hashpass,
+    name: name,
+  });
 
-  try {
-    await Usermodel.create({ email, password, name });
-    res.json({ message: "You are signed up" });
-  } catch (error) {
-    console.error("Error during signup:", error);
-    res.status(500).json({ message: "Error signing up user" });
-  }
+  res.json({
+    message: "You are signed up",
+  });
 });
 
-// Signin endpoint
 app.post("/signin", async function (req, res) {
-  const { email, password } = req.body;
+  const email = req.body.email;
+  const password = req.body.password;
 
-  try {
-    const user = await Usermodel.findOne({ email, password });
+  const response = await UserModel.findOne({
+    email: email,
+    password: password,
+  });
 
-    if (user) {
-      const token = jwt.sign({ id: user._id.toString() }, JWT_SECRET);
-      res.json({ token });
-    } else {
-      res.status(403).json({ message: "Incorrect Credentials" });
-    }
-  } catch (error) {
-    console.error("Error during signin:", error);
-    res.status(500).json({ message: "Error signing in user" });
+  if (response) {
+    const token = jwt.sign(
+      {
+        id: response._id.toString(),
+      },
+      JWT_SECRET
+    );
+
+    res.json({
+      token,
+    });
+  } else {
+    res.status(403).json({
+      message: "Incorrect creds",
+    });
   }
 });
 
-// Placeholder routes for /todo and /todos
-app.post("/todo", function (req, res) {
-  // Todo route implementation
-  res.send("Todo creation not yet implemented");
+app.post("/todo", auth, async function (req, res) {
+  const userId = req.userId;
+  const title = req.body.title;
+  const done = req.body.done;
+
+  await TodoModel.create({
+    userId,
+    title,
+    done,
+  });
+
+  res.json({
+    message: "Todo created",
+  });
 });
 
-app.get("/todos", function (req, res) {
-  // Get todos implementation
-  res.send("Todos retrieval not yet implemented");
+app.get("/todos", auth, async function (req, res) {
+  const userId = req.userId;
+
+  const todos = await TodoModel.find({
+    userId,
+  });
+
+  res.json({
+    todos,
+  });
 });
 
-app.listen(3000, () => console.log("Server running on port 3000"));
+app.listen(3000);
