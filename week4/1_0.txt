@@ -52,14 +52,14 @@ It is a package manager for JavaScript, primarily used for managing libraries an
 NPM allows developers to easily install, update, and manage packages of reusable code
 
 Uses of npm
-Initializing a project
+Initializing a project:
 npm init
 ​
-Running scripts
+Running scripts:
 npm run test
 ​
-Installing external dependencies
-example
+Installing external dependencies:
+example:
 npm install chalk
 
 # Internal packages
