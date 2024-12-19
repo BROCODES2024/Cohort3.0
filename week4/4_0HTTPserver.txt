@@ -1,3 +1,5 @@
+https://petal-estimate-4e9.notion.site/Intro-to-HTTP-26c5803f153b4401aa76e9fac08ac427
+
 Back in the day, HTTP was introduced so machines all around the world could talk to each other.
 
 This would be useful for things like
