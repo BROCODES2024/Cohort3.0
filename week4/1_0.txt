@@ -1,3 +1,5 @@
+https://petal-estimate-4e9.notion.site/Node-js-Bun-and-JS-runtimes-a09a41ccd61c4f498e55750c9a1c9b34
+
 Node.js is an open-source JS runtime  that allows you to execute JavaScript code on the server side.
 It’s built on Chrome's V8 JavaScript engine.
 
